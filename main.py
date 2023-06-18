@@ -28,12 +28,12 @@ with open('phonebook_raw.csv', newline='', encoding='utf-8') as f:
                     number = phone.group(0)
                     if email_match:
                         email = email_match.group(0)
-                        key = f'{lastname} {firstrname} {surname}, {organization}, {number}, {email}'
+                        key = f'\n{lastname} {firstrname} {surname}, {organization}, {number}, {email}'
                         contacts_list.append(key)
                     else:
-                        key = f'{lastname} {firstrname} {surname}, {organization}, {number}'
+                        key = f'\n{lastname} {firstrname} {surname}, {organization}, {number}'
                         contacts_list.append(key)
-with open("phonebook.csv", "w", newline='', encoding='utf-8') as file:
+with open("phonebook.csv", "w", encoding='utf-8') as file:
     datawriter = csv.writer(file)
     datawriter.writerow(contacts_list)
-pprint(contacts_list)
+print(contacts_list)

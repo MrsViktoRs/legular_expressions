@@ -1,6 +1,4 @@
 import re
-from typing import List, Dict
-from pprint import pprint
 import csv
 
 fio_patt = r"^(\w+)( |,)(\w+)( |,)(\w+|),(,+|)(,,,|[А-Яа-я]+)"
@@ -9,19 +7,6 @@ phone_patt = r'(\+\d|\d)\s*(\(|)(\d{3})[\s\)-]*(\d{3})\-*(\d{2})\-*(\d{2})'
 phone_repl = r'+7(\3)\4-\5-\6'
 add_phone_patt = r'\(доб\.\s(\d+)\)*'
 add_phone_repl = r'доп.\1'
-patterns = {
-    'fio': {
-        'regexp': r'^(\w+)( |,)(\w+)( |,)(\w+|),(,+|)(,,,|[А-Яа-я]+)',
-        'subst': r'\1,\3,\5,\7'
-    },
-    'phone': {
-        'regexp': r'(\+\d|\d)\s*(\(|)(\d{3})[\s\)-]*(\d{3})\-*(\d{2})\-*(\d{2})',
-        'subst': r'+7(\3)\4-\5-\6'},
-    'add_phone': {
-        'regexp': r'\(доб\.\s(\d+)\)*',
-        'subst': r'доп.\1'
-    }
-}
 
 
 def sub_data(list_data) -> str:

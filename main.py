@@ -23,7 +23,6 @@ def remove_dubl(list_lines) -> dict:
     res_dict = {}
     for line in list_lines:
         name = line.split(',')
-        print(name)
         if name[0] in res_dict:
             for i, element in enumerate(res_dict[name[0]]):
                 if element == '':
@@ -31,6 +30,14 @@ def remove_dubl(list_lines) -> dict:
         else:
             res_dict[name[0]] = name[0:]
     return res_dict
+
+
+def dict_to_list(dict_data) -> list:
+    final_list = []
+    for key, values in dict_data.items():
+        for i in values:
+            final_list.append(i)
+    return final_list
 
 
 def open_file(file):
@@ -44,5 +51,5 @@ def write_file(file):
 
 
 if __name__ == '__main__':
-    print(sub_data(open_file('phonebook_raw.csv')))
-    print(remove_dubl(sub_data(open_file('phonebook_raw.csv'))))
+    fin_list = dict_to_list(remove_dubl(sub_data(open_file('phonebook_raw.csv'))))
+    write_file(' '.join(fin_list))
